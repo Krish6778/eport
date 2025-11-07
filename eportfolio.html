@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yash Chamoli Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Swiper Carousel for Swipeable Pages -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+  <style>
+    :root {
+      --main-bg: #231e2b;
+      --accent: #70e6f3;
+      --card-bg: #292c42;
+      --heading: #fffbe6;
+      --projects-bg: #1d2a2e;
+      --text: #e9eafc;
+      --highlight: #4dffb9;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--main-bg);
+      color: var(--text);
+    }
+    header {
+      background: var(--accent);
+      color: var(--main-bg);
+      padding: 2rem 1rem 1rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      margin: 0 0 0.5rem 0;
+      color: var(--main-bg);
+    }
+    header p {
+      font-size: 1.1rem;
+      margin: 0;
+      color: var(--main-bg);
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5rem;
+      background: var(--card-bg);
+      padding: 1rem 0;
+    }
+    nav a {
+      color: var(--accent);
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 0.6rem 1.2rem;
+      text-decoration: none;
+      transition: background 0.2s, box-shadow 0.3s, color 0.2s;
+    }
+    nav a:hover {
+      color: var(--highlight);
+      background: var(--main-bg);
+      box-shadow: 0 0 15px var(--highlight), 0 0 10px var(--accent);
+    }
+    section {
+      max-width: 950px;
+      margin: 2.5rem auto;
+      background: var(--card-bg);
+      border-radius: 14px;
+      box-shadow: 0 4px 28px #304;
+      padding: 1.6rem 1rem;
+    }
+    h2 {
+      color: var(--accent);
+      margin-top: 0;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .skills-block {
+      background: var(--main-bg);
+      border: 2px solid var(--accent);
+      color: var(--highlight);
+      border-radius: 12px;
+      padding: 1.2rem 1rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 0 8px #46d9f590;
+      font-size: 1.08rem;
+    }
+    .skills-block strong {
+      color: var(--accent);
+      font-size: 1.1rem;
+    }
+    .skills-block ul {
+      margin: 0.8rem 0 0 0.5rem;
+      padding: 0;
+      list-style: disc;
+      color: var(--text);
+    }
+    .skills-block li {
+      margin-bottom: .4rem;
+      font-weight: 500;
+    }
+    .project-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      list-style: none;
+      margin-bottom: 1.2rem;
+      padding: 0;
+    }
+    .project-card {
+      background: var(--projects-bg);
+      color: #fffbe6;
+      padding: 1.4rem 1rem;
+      border-radius: 11px;
+      margin-bottom: 1.2rem;
+      min-width: 200px;
+      box-shadow: 0 2px 18px 0 #00e6e6b3;
+      border: 2px solid #43c4d2bb;
+      transition: box-shadow 0.2s, transform 0.2s;
+      flex: 1 1 300px;
+    }
+    .project-card:hover {
+      box-shadow: 0 0 30px #56f0b9, 0 0 18px var(--accent);
+      transform: translateY(-6px) scale(1.03);
+      color: var(--heading);
+    }
+    .project-card strong { font-size: 1.12rem;}
+    .contact-info {
+      margin-top: 1rem;
+      font-size: 1.12rem;
+    }
+    .contact-info a {
+      color: var(--highlight); text-decoration: underline;
+    }
+    /* Swiper Styles */
+    .swiper {
+      width: 100%;
+      padding: 0;
+      margin-top: 1rem;
+      background: none;
+    }
+    .swiper-slide {
+      background: var(--card-bg);
+      border-radius: 14px;
+      padding: 1.2rem 2.5vw;
+      min-height: 280px;
+      box-shadow: 0 2px 17px #45e6e635;
+      color: var(--text);
+      font-size: 1rem;
+      display: flex!important; flex-direction: column;
+      justify-content: flex-start; align-items: flex-start;
+    }
+    .swiper-pagination { text-align: center!important; }
+    /* PDF and PPT viewer layouts */
+    .embed-section {
+      display: flex; flex-direction: column; gap: 1rem; align-items: center;
+      background: var(--main-bg);
+      margin: 1rem 0 0 0;
+      padding: 0.7rem 0.3rem;
+      border-radius: 10px;
+    }
+    .embed-section iframe {
+      border: 2px solid var(--accent);
+      border-radius: 7px;
+      width: 100%; max-width: 700px; min-height: 350px;
+      background: #fff;
+      margin-bottom: .5rem;
+    }
+    @media (max-width: 700px) {
+      section {padding: 1rem 0.2rem;}
+      .project-list {flex-direction: column;}
+      .project-card {min-width: unset;}
+      .embed-section iframe {min-height: 250px;}
+      header h1 {font-size: 1.5rem;}
+    }
+    @media (max-width:400px) {
+      .embed-section iframe {min-height:170px;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>I'm Yash Chamoli</h1>
+    <p>BTech student from Graphic Era Hill University, Dehradun</p>
+  </header>
+  <nav>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#learnings">Top Learnings</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="skills">
+    <h2>Skills & Education</h2>
+    <div class="skills-block">
+      <strong>Programming Languages:</strong> Python, C, C++, SQL<br>
+      <strong>Technologies &amp; Tools:</strong> HTML, CSS, JavaScript, Git &amp; Version Control, Linux/Unix<br>
+      <strong>Core Concepts:</strong> Data Structures, Algorithms, Database Management, Software Engineering<br>
+      <strong>Areas of Interest:</strong> Artificial Intelligence, Cybersecurity, Web Development, Operating Systems<br>
+      <strong>Education:</strong><br>
+      BTech Computer Science &amp; Engineering, Graphic Era Hill University, Dehradun (3rd year)<br>
+      High School, Spring Fields College, Moradabad
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Featured Projects</h2>
+    <div class="project-list">
+      <div class="project-card">
+        <strong>Weather Monitoring and Scientific Calculator (First Semester)</strong>
+        <p>
+          Designed a scientific calculator and a weather monitoring tool in the first semester. The calculator handles basic and scientific functions, while the monitoring system collects, tracks, and analyzes local weather data for easy reporting.<br>
+          <em>Learnings:</em> Deepened logic design, data parsing, and UI development. Improved modular coding and data visualization.
+        </p>
+      </div>
+      <div class="project-card">
+        <strong>Digital Notice Board Management using Data Structures</strong>
+        <p>
+          Created a digital notice board system using arrays and linked lists for efficient storage and retrieval of circulars. Features include add, remove, search, and sort for notices, streamlining campus communication.<br>
+          <em>Learnings:</em> Mastered array/linked list design patterns, improved workflow automation, and strengthened debugging skills.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="learnings">
+    <h2>Top 50 Learnings</h2>
+    <div class="swiper mySwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <strong>SWOC Analysis</strong>
+          <ul>
+            <li>I learnt how to analyze my own strengths, weaknesses, opportunities, and challenges through SWOC.</li>
+            <li>I got a clearer idea of what I’m good at and how I can use my strengths effectively.</li>
+            <li>I identified a few areas where I need to improve and started working on them.</li>
+            <li>I learnt how to look for opportunities that can help me grow personally and professionally.</li>
+            <li>I understood how to face and manage challenges with a positive attitude.</li>
+            <li>This unit helped me become more self-aware and confident.</li>
+            <li>I improved the way I express my thoughts while presenting my SWOC.</li>
+            <li>I developed better analytical thinking while reflecting on my personal traits.</li>
+            <li>I realized how useful SWOC analysis can be for career planning and goal setting.</li>
+            <li>Overall, I learnt a lot about myself and how to use my abilities in the right direction.</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <strong>Self Introduction</strong>
+          <ul>
+            <li>I learnt how to introduce myself confidently and effectively.</li>
+            <li>I understood what points to include and how to organize them in a short introduction.</li>
+            <li>I became more comfortable speaking about myself in front of others.</li>
+            <li>I learnt how to make my introduction sound natural yet professional.</li>
+            <li>I improved my body language, posture, and eye contact while speaking.</li>
+            <li>I got better at managing my tone and clarity of speech.</li>
+            <li>I practiced different types of introductions for formal and informal situations.</li>
+            <li>I got helpful feedback that made my introduction smoother and more confident.</li>
+            <li>I learnt to handle nervousness while speaking in front of a group.</li>
+            <li>This unit really helped me feel more confident in interviews and presentations.</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <strong>Presentation Skills</strong>
+          <ul>
+            <li>I learnt how to plan and deliver a clear and engaging presentation.</li>
+            <li>I understood the importance of knowing my audience before presenting.</li>
+            <li>I became more aware of my body language and voice while speaking.</li>
+            <li>I learnt how to organize my content properly with an introduction, main points, and conclusion.</li>
+            <li>I practiced using slides and visuals to make my presentation more effective.</li>
+            <li>I improved my confidence and overcame stage fear.</li>
+            <li>I learnt how to manage my time and keep the audience interested.</li>
+            <li>I got better at explaining topics in a simple and structured way.</li>
+            <li>I received feedback that helped me refine my presentation style.</li>
+            <li>Overall, I became much more confident and expressive as a presenter.</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <strong>Public Speaking</strong>
+          <ul>
+            <li>I learnt the importance of public speaking and how it builds confidence.</li>
+            <li>I practiced speaking on different topics in front of the class.</li>
+            <li>I overcame a lot of my stage fear and nervousness.</li>
+            <li>I learnt how to express my ideas clearly and confidently.</li>
+            <li>I worked on my tone, clarity, and overall delivery.</li>
+            <li>I got better at organizing my thoughts before speaking.</li>
+            <li>Activities like JAM and extempore really improved my fluency.</li>
+            <li>I learnt how to maintain eye contact and connect with the audience.</li>
+            <li>I became more spontaneous and comfortable while speaking on the spot.</li>
+            <li>This unit helped me become a more confident and natural speaker.</li>
+          </ul>
+        </div>
+        <div class="swiper-slide">
+          <strong>Art of Conversation</strong>
+          <ul>
+            <li>I learnt how to start and maintain meaningful conversations with others.</li>
+            <li>I understood the importance of good listening while communicating.</li>
+            <li>I became more polite and confident while talking to people.</li>
+            <li>I learnt proper communication etiquette for different situations.</li>
+            <li>I improved my tone, expressions, and body language during conversations.</li>
+            <li>I practiced real-life scenarios that made me more comfortable interacting with new people.</li>
+            <li>I learnt how to keep conversations balanced and engaging.</li>
+            <li>I became more aware of cultural and social manners while speaking.</li>
+            <li>I got better at handling both formal and casual talks.</li>
+            <li>Overall, this unit improved my communication and helped me interact more naturally with others.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <section id="showcase">
+    <h2>Showcase</h2>
+    <div class="embed-section">
+      <!-- Introduction Video (Add the link to your video below) -->
+      <strong>Introduction Video</strong>
+      <iframe src="YOUR_VIDEO_URL_HERE" allowfullscreen></iframe>
+      <!-- Assignment PDF (Add your PDF link below) -->
+      <strong>Assignment PDF</strong>
+      <iframe src="YOUR_NEW_PDF_URL_HERE"></iframe>
+      <!-- Presentation PPT (using provided OneDrive link) -->
+      <strong>Presentation PPT</strong>
+      <iframe src="https://1drv.ms/p/c/7f24e6c83f883baa/ERB26E3I7O9MqPj8GswXijYBphV6E1WP7kSVPtVbolvSkQ"></iframe>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Information</h2>
+    <div class="contact-info">
+      <p>Email: chamoliyashdj@gmail.com</p>
+      <p>Location: Dehradun, India</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/yash-chamoli-708065341?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+        Connect on LinkedIn</a></p>
+    </div>
+  </section>
+
+  <!-- SwiperJS scripts for swipe pages -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      loop: false,
+      centeredSlides: false
+    });
+  </script>
+</body>
+</html>
